@@ -10,3 +10,5 @@ SELECT * FROM tbl_book;
 
 INSERT INTO tbl_book(b_name)
 VALUES('자바야놀자');
+
+--이곳은 user1 작업 화면이다.
