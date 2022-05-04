@@ -121,7 +121,7 @@ SELECT COUNT(*) 데이터수
 FROM tbl_student;
 
 --정체 데이터 중 컴공과 학생이 몇명인가
-SElECT COUNT(st_dept)
+SELECT COUNT(st_dept)
 FROM tbl_student
 WHERE st_dept = '컴공과';
 
@@ -185,6 +185,12 @@ CREATE TABLE tbl_score(
 
 );
 
+SELECT * FROM tbl_student;
+
+SELECT st_dept, COUNT(st_dept) AS 학생수
+FROM tbl_student
+GROUP BY st_dept 
+ORDER BY 학생수 DESC, st_dept;
 
 
 
