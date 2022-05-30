@@ -10,3 +10,6 @@ CREATE TABLE tbl_user(
 );
 
 SELECT * FROM tbl_user;
+
+
+commit
