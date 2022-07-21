@@ -37,3 +37,56 @@ CREATE USER 'GOGOYS'@'localhost' identified BY '!Korea8080';
 */
 GRANT ALL privileges ON mydb.* TO 'GOGOYS'@'localhost';
 
+CREATE USER 'user1'@'127.0.0.1' identified BY '!Korea8080';
+-- user1은 모든 DB Schema에 접근할 수 있는 권한 부여
+GRANT ALL privileges ON *.* TO 'user1'@'127.0.0.1';
+-- 어디에서나 접속 할 수 있도록 범위를 지정하지 않는 사용자 등록
+CREATE USER 'user2'@'*' identified BY '!Korea8080';
+DROP TABLE  tbl_memos;
+SELECT * FROM tbl_memos;
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS tbl_memo (	
+	 		m_seq BIGINT  PRIMARY KEY AUTO_INCREMENT,
+	 		m_author VARCHAR(25) NOT NULL,
+	 		m_date VARCHAR(10) NOT NULL,
+	 		m_time VARCHAR(10) NOT NULL,
+	 		m_memo VARCHAR(40) NOT NULL,
+	 		m_image VARCHAR(125)
+		);
+        
+  DROP TABLE  tbl_memos;      
+        CREATE TABLE IF NOT EXISTS tbl_memos(
+ 			m_seq BIGINT PRIMARY KEY AUTO_INCREMENT,
+ 			m_author VARCHAR(25) NOT NULL,
+ 			m_date VARCHAR(10) NOT NULL,
+ 			m_time VARCHAR(10) NOT NULL,
+			m_title VARCHAR(40) NOT NULL,
+            m_weather VARCHAR(5) NOT NULL,
+ 			m_memo VARCHAR(1000) NOT NULL,
+ 			m_image VARCHAR(125),
+ 			m_up_image VARCHAR(125), 
+ 			m_mapx VARCHAR(25), 
+ 			m_mapy VARCHAR(25), 
+ 			m_icon VARCHAR(125) ,
+            m_personal  VARCHAR(5)
+ 		);
+	 	
+CREATE  TABLE tbl_iolist(
+io_seq	BIGINT	PRIMARY KEY,
+io_date	VARCHAR(10)	NOT NULL,
+io_time	VARCHAR(10)	NOT NULL,
+io_pname	VARCHAR(50)	NOT NULL,	
+io_dname	VARCHAR(50)	NOT NULL,	
+io_dceo	VARCHAR(20),		
+io_inout	VARCHAR(1)	NOT NULL,	
+io_qty	INT	NOT NULL,	
+io_price	INT	NOT NULL
+);
+
+

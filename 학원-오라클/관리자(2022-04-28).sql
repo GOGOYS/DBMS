@@ -20,3 +20,11 @@
  GRANT DBA To user3;
  GRANT DBA To user1;
  
+ CREATE TABLESPACE seasoning
+ DATAFILE 'C:/oraclexe/data/seasoning.dbf'
+ SIZE 1M AUTOEXTEND ON NEXT 1K;
+ 
+ CREATE USER st_db IDENTIFIED BY 1234
+ DEFAULT TABLESPACE seasoning;
+ 
+ GRANT DBA TO st_db;
