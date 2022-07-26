@@ -3,6 +3,8 @@ use schoolDB;
 
 SELECT  * FROM tbl_student;
 
+SELECT * FROM tbl_student;
+
 -- 학사정보 테이블 명세를 참조하여 tbl_student 테이블 생성
 DROP TABLE tbl_student;
 CREATE TABLE tbl_student(
@@ -131,7 +133,7 @@ GROUP BY SC.sc_stnum;
 -- 학번, 데이터베이스 점수(SB002)
 SELECT sc_stnum, sc_score
 FROM tbl_score
-WHERE sc_sbcode = 'SB002';
+WHERE sc_sbcode = '0';
 
 -- 데이터 베이스에서 피벗코드 구현하기 pivot
 -- 데이터베이스의 로우로 펼쳐지는 데이터를 칼럼으로 표출할때
@@ -175,3 +177,45 @@ GROUP BY sc_stnum, st_name;
 -- 데이터가 저장되어 있다.
 -- 이 데이터를 쉽게 보고서 등으로 만들때는 PIVOT으로 하여
 -- 칼럼 방향으로 펼쳐서 보는것이 편리하다
+
+use schoolDB;
+-- 학번, 이름, 과목명, 성적 열람
+SELECT  sc_stnum, st_name, sb_name, sc_score
+FROM tbl_score
+	LEFT JOIN tbl_student
+		ON sc_stnum = st_num
+			LEFT JOIN tbl_subject
+				ON sc_sbcode = sb_code
+                WHERE sb_name= '국어'
+                ORDER BY sc_stnum desc;
+                
+                DESC tbl_student;
+
+SELECT  st_num, st_name, st_dept, st_tel, st_addr,
+ SUM(IF(sc_sbcode = 'SB001', sc_score,0)),
+ SUM(IF(sc_sbcode = 'SB002', sc_score,0)) AS 데이터베이스,
+ SUM(IF(sc_sbcode = 'SB003', sc_score,0)) AS 미술,
+ SUM(IF(sc_sbcode = 'SB004', sc_score,0)) AS 소프트웨어공학,
+ SUM(IF(sc_sbcode = 'SB005', sc_score,0)) AS 수학,
+ SUM(IF(sc_sbcode = 'SB006', sc_score,0)) AS 영어영문,
+ SUM(IF(sc_sbcode = 'SB007', sc_score,0)) AS 음악
+FROM tbl_student ST
+ LEFT JOIN tbl_score SC
+	ON st_num = sc_stnum
+		LEFT JOIN tbl_subject SB
+			ON sc_sbcode  = sb_code 
+            WHERE st_num = "S0009";
+            
+            SELECT * FROM tbl_score
+ 			LEFT JOIN tbl_subject
+ 				ON sc_sbcode = sb_code
+ 		WHERE sc_stnum = 'S0001';
+        
+        select * from tbl_score
+			LEFT JOIN tbl_student
+				ON sc_stnum = st_num
+			WHERE sc_stnum= 'S0001';
+        
+        UPDATE tbl_score
+ 		SET sc_score = 10
+ 		WHERE sc_stnum = 'S0001' AND sc_sbcode = 'SB001';
