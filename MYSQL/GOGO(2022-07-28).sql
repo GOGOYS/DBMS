@@ -10,7 +10,7 @@ DROP TABLE tbl_users;
 */
 CREATE TABLE tbl_users(
 	username VARCHAR(20) PRIMARY KEY,
-	password VARCHAR(20) NOT NULL,
+	password VARCHAR(255) NOT NULL,
 	isEnabled BOOLEAN DEFAULT FALSE,
 	isAccountNonExpired BOOLEAN DEFAULT TRUE,
 	isAccountNonLocked BOOLEAN DEFAULT TRUE,
@@ -35,3 +35,6 @@ CREATE TABLE tbl_authorities(
 desc tbl_users;
 drop table tbl_users;
 drop table tbl_authorities;
+
+use schoolDb;
+
